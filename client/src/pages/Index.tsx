@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Star, Loader2, ChevronLeft, ChevronRight, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
+import { ArrowRight, Star, Loader2, ChevronLeft, ChevronRight, CheckCircle2, ShieldCheck, Zap, ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import ProductCard from '@/components/ProductCard';
@@ -29,33 +29,33 @@ const banners = [
     title: "Elevate Your Professional Workspace",
     subtitle: "High-performance office gear and ergonomics for modern professionals.",
     button: "View Office Gear",
-    accent: "bg-blue-600"
+    accent: "bg-red-700"
   },
   {
     image: banner3,
     title: "Craft Your Dream Home Interior",
     subtitle: "Premium home and kitchen essentials designed for elegant living.",
     button: "Shop Home Collection",
-    accent: "bg-amber-600"
+    accent: "bg-rose-800"
   },
   {
     image: banner4,
     title: "Timeless Scents & Beauty Rituals",
     subtitle: "Exclusive perfumes and wellness products for the sophisticated individual.",
     button: "Browse Beauty",
-    accent: "bg-rose-500"
+    accent: "bg-red-900"
   },
   {
     image: banner5,
     title: "Premium Care for Your Best Friends",
     subtitle: "Top-tier pet supplies and nutrition to keep your companions happy.",
     button: "View Pet Supplies",
-    accent: "bg-emerald-600"
+    accent: "bg-pink-900"
   }
 ];
 
 const testimonials = [
-  { id: 1, name: "Sarah Johnson", role: "Interior Designer", text: "LeaseLink Solution has become my go-to for high-end home decor. The quality is consistently exceptional.", rating: 5 },
+  { id: 1, name: "Sarah Johnson", role: "Interior Designer", text: "TradeWings Solution has become my go-to for high-end home decor. The quality is consistently exceptional.", rating: 5 },
   { id: 2, name: "Michael Chen", role: "Tech Entrepreneur", text: "Reliable service and a curated selection. My entire office was outfitted through their marketplace.", rating: 5 },
   { id: 3, name: "Elena Rodriguez", role: "Pet Groomer", text: "The professional-grade pet supplies have made a huge difference in my daily operations.", rating: 5 }
 ];
@@ -99,13 +99,13 @@ const Index = () => {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "LeaseLink Solution",
-    "url": "https://leaselinksolution.com",
-    "logo": "https://leaselinksolution.com/logo.png",
+    "name": "TradeWings Solution",
+    "url": "https://tradewingssolution.com",
+    "logo": "https://tradewingssolution.com/logo.png",
     "sameAs": [
-      "https://facebook.com/leaselinksolution",
-      "https://instagram.com/leaselinksolution",
-      "https://twitter.com/leaselinksolution"
+      "https://facebook.com/tradewingssolution",
+      "https://instagram.com/tradewingssolution",
+      "https://twitter.com/tradewingssolution"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -115,10 +115,10 @@ const Index = () => {
   };
 
   return (
-    <main className="font-body overflow-x-hidden">
+    <main className="font-body overflow-x-hidden bg-background mesh-gradient min-h-screen">
       <SEO 
-        title="LeaseLink Solution | Premium Retail & Marketplace"
-        description="Discover curated collections of premium office products, baby essentials, home & kitchen, pet supplies, and luxury perfumes. Swift delivery and quality assured at LeaseLink Solution."
+        title="TradeWings Solution | Premium Retail & Marketplace"
+        description="Discover curated collections of premium office products, baby essentials, home & kitchen, pet supplies, and luxury perfumes. Swift delivery and quality assured at TradeWings Solution."
         schema={organizationSchema}
       />
       {/* Hero Banner Slider */}
@@ -132,7 +132,8 @@ const Index = () => {
             transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute inset-0"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/40 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent z-10" />
               <motion.img
                 initial={{ scale: 1.15 }}
                 animate={{ scale: 1 }}
@@ -145,7 +146,7 @@ const Index = () => {
           </motion.div>
         </AnimatePresence>
 
-        <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center">
+        <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center pt-24">
           <motion.div
             key={`content-${currentSlide}`}
             initial={{ opacity: 0, x: -50 }}
@@ -153,25 +154,37 @@ const Index = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="max-w-3xl"
           >
-            <div className={`w-20 h-1.5 mb-8 rounded-full ${banners[currentSlide].accent} shadow-[0_0_20px_rgba(255,255,255,0.5)]`} />
-            <h1 className="font-display text-5xl md:text-8xl font-black text-white leading-[1] mb-6 drop-shadow-2xl">
-              {banners[currentSlide].title}
-            </h1>
-            <p className="text-white/80 text-xl md:text-2xl mb-10 max-w-xl font-medium">
-              {banners[currentSlide].subtitle}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/shop">
-                <Button size="lg" className="bg-white text-black hover:bg-white/90 rounded-2xl h-16 px-10 text-lg font-bold shadow-[0_10px_30px_rgba(255,255,255,0.2)]">
-                  {banners[currentSlide].button}
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button size="lg" variant="outline" className="text-white border-white/20 bg-black/20 hover:bg-black/60 hover:text-white backdrop-blur-xl rounded-2xl h-16 px-10 text-lg font-bold shadow-xl transition-all">
-                  About LeaseLink Solution
-                </Button>
-              </Link>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-4xl"
+            >
+              <div className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 mb-8 animate-fade-in">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/90">Premium Collection 2026</span>
+              </div>
+              <h1 className="font-display text-5xl md:text-[6.5rem] font-black tracking-tighter leading-[0.85] mb-8 text-white uppercase mt-12">
+                {banners[currentSlide].title.split(' ').slice(0, -1).join(' ')} <br />
+                <span className="text-primary italic brightness-125">{banners[currentSlide].title.split(' ').slice(-1)}</span>
+              </h1>
+              <p className="text-white/60 text-xl md:text-2xl font-medium max-w-2xl leading-relaxed mb-12 animate-fade-in-up">
+                {banners[currentSlide].subtitle}
+              </p>
+              
+              <div className="flex flex-wrap gap-6">
+                <Link to="/shop">
+                  <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-2xl h-16 px-10 text-lg font-black shadow-[0_0_40px_rgba(139,92,246,0.3)] transition-all hover:scale-105 active:scale-95 group">
+                    {banners[currentSlide].button}
+                    <ShoppingBag className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform" />
+                  </Button>
+                </Link>
+                <Link to="/about">
+                  <Button size="lg" variant="outline" className="text-white border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-xl rounded-2xl h-16 px-10 text-lg font-black shadow-xl transition-all hover:scale-105 active:scale-95">
+                    Our Story
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -196,7 +209,7 @@ const Index = () => {
       </section>
 
       {/* Trust Badges */}
-      <section className="bg-white py-12 border-b">
+      <section className="bg-background py-12 border-b border-border">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap justify-center md:justify-between items-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500 font-display text-2xl font-black italic">
              <span>PRIME QUALITY</span>
@@ -209,7 +222,7 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-secondary/30">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-10">
             {[
@@ -223,7 +236,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="p-8 rounded-[2.5rem] bg-white shadow-xl shadow-slate-200/50 hover:shadow-2xl transition-all hover:-translate-y-2"
+                className="p-8 rounded-[2.5rem] bg-card border border-border shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
                   <feature.icon className="w-8 h-8" />
@@ -237,7 +250,7 @@ const Index = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="container mx-auto px-6 py-32">
+      <section className="container mx-auto px-6 py-32 bg-background text-foreground">
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
             <h2 className="font-display text-4xl md:text-6xl font-black text-foreground leading-tight tracking-tighter">Handpicked Favorites</h2>
@@ -264,7 +277,7 @@ const Index = () => {
       </section>
 
       {/* Categories Modern Grid */}
-      <section className="bg-foreground py-32 text-white overflow-hidden">
+      <section className="bg-zinc-950 py-32 text-white overflow-hidden border-y border-white/5">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="font-display text-4xl md:text-6xl font-black mb-6 tracking-tighter">Shop by Category</h2>
@@ -304,11 +317,11 @@ const Index = () => {
       </section>
 
       {/* Testimonials - Refined */}
-      <section className="py-32 bg-white overflow-hidden">
+      <section className="py-32 bg-background overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="font-display text-4xl md:text-5xl font-black mb-4 tracking-tighter">Customer Stories</h2>
-            <p className="text-muted-foreground font-medium">Join thousands of satisfied shoppers who trust LeaseLink Solution.</p>
+            <p className="text-muted-foreground font-medium">Join thousands of satisfied shoppers who trust TradeWings Solution.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-10">
             {testimonials.map((t, i) => (
@@ -318,7 +331,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="relative p-10 rounded-[3rem] border border-slate-100 bg-slate-50/50 hover:bg-slate-50 transition-colors"
+                className="relative p-10 rounded-[3rem] border border-border bg-card hover:bg-secondary/20 transition-colors"
               >
                 <div className="flex gap-1 mb-6 text-amber-500">
                   {Array.from({ length: t.rating }).map((_, j) => (
@@ -347,17 +360,17 @@ const Index = () => {
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative rounded-[4rem] bg-foreground p-12 md:p-24 overflow-hidden text-white shadow-2xl"
+          className="relative rounded-[4rem] bg-zinc-950 p-12 md:p-24 overflow-hidden text-white shadow-2xl border border-white/5"
         >
           {/* Decorative Glows */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full -mr-48 -mt-48 blur-[100px] animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full -ml-32 -mb-32 blur-[80px]" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full -mr-48 -mt-48 blur-[120px] animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full -ml-32 -mb-32 blur-[100px]" />
           
           <div className="relative z-10 flex flex-col items-center text-center space-y-12">
              <div className="max-w-2xl space-y-4">
                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-primary">Priority Access</p>
-               <h2 className="font-display text-4xl md:text-7xl font-black tracking-tighter leading-[0.9]">Stay ahead of the curve.</h2>
-               <p className="text-white/50 text-xl font-medium max-w-lg mx-auto leading-relaxed">Subscribe to receive exclusive deals, new collection alerts, and LeaseLink Solution news.</p>
+               <h2 className="font-display text-4xl md:text-7xl font-black tracking-tighter leading-[0.9] text-white">Stay ahead of the curve.</h2>
+               <p className="text-white/60 text-xl font-medium max-w-lg mx-auto leading-relaxed">Subscribe to receive exclusive deals, new collection alerts, and TradeWings Solution news.</p>
              </div>
 
              <div className="w-full max-w-xl space-y-6">
@@ -367,7 +380,7 @@ const Index = () => {
                     placeholder="Enter your email"
                     className="h-16 rounded-2xl bg-white/5 border-white/10 text-white placeholder:text-white/30 text-lg px-8 focus:bg-white/10 focus:border-white/20 transition-all font-bold"
                   />
-                  <Button className="bg-primary text-white hover:bg-primary/90 h-16 px-12 rounded-2xl font-black text-lg whitespace-nowrap shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all">
+                  <Button className="bg-primary text-white hover:bg-primary/90 h-16 px-12 rounded-2xl font-black text-lg whitespace-nowrap shadow-xl shadow-primary/40 hover:scale-[1.02] transition-all">
                     Join Now
                   </Button>
                 </div>
@@ -375,13 +388,13 @@ const Index = () => {
                 <div className="flex items-center justify-center gap-4">
                    <div className="flex -space-x-3">
                       {[1,2,3,4].map(i => (
-                        <div key={i} className="w-8 h-8 rounded-full border-2 border-foreground bg-slate-800 flex items-center justify-center text-[8px] font-black text-white/50">
+                        <div key={i} className="w-8 h-8 rounded-full border-2 border-zinc-950 bg-zinc-800 flex items-center justify-center text-[8px] font-black text-white/50">
                            {i === 4 ? '+10k' : ''}
                         </div>
                       ))}
                    </div>
                    <p className="text-[10px] uppercase font-black tracking-widest text-white/30">
-                     Trusted by over <span className="text-white">10,000+</span> global shoppers.
+                     Trusted by over <span className="text-white font-bold">10,000+</span> global shoppers.
                    </p>
                 </div>
              </div>

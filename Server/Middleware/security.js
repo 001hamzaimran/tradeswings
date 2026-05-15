@@ -1,10 +1,10 @@
 /**
- * Security Middleware for LeaseLink Solution
+ * Security Middleware for TradeWings Solution
  * Implements manual security headers and basic rate limiting
  */
 
 const requestCounts = new Map();
-const RATE_LIMIT = 100; // max requests
+const RATE_LIMIT = 1000; // max requests
 const WINDOW_MS = 15 * 60 * 1000; // 15 minutes
 
 export const securityMiddleware = (req, res, next) => {
@@ -31,16 +31,17 @@ export const securityMiddleware = (req, res, next) => {
     res.setHeader('X-Frame-Options', 'DENY');
     res.setHeader('X-XSS-Protection', '1; mode=block');
     res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; object-src 'none';");
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data: https://res.cloudinary.com https://images.unsplash.com; connect-src 'self' https://tradewingssolution.com http://localhost:8000;");
 
     // 3. API Integrity Check (Client Secret)
     // We expect a specific header from our frontend
     const clientSecret = req.headers['x-app-integrity'];
-    const expectedSecret = process.env.API_INTEGRITY_SECRET || 'leaselink_secure_2026';
+    const expectedSecret = process.env.API_INTEGRITY_SECRET || 'tradewings_secure_2026';
 
     // Protect destructive methods
     if (['POST', 'PUT', 'DELETE'].includes(req.method)) {
         if (clientSecret !== expectedSecret) {
+            console.error(`Security Check Failed: Expected ${expectedSecret}, got ${clientSecret}`);
             return res.status(403).json({ message: "Unauthorized request origin." });
         }
     }

@@ -17,19 +17,19 @@ const values = [
     title: 'Global Sourcing', 
     desc: 'We partner with premium manufacturers worldwide to bring you exclusive, high-quality products that define modern living.',
     icon: Globe,
-    color: 'bg-blue-50 text-blue-600'
+    color: 'bg-red-50 text-red-600'
   },
   { 
     title: 'Curated Excellence', 
     desc: 'Every item in our collection is hand-picked for its superior craftsmanship, ensuring only the best reaches your hands.',
     icon: Award,
-    color: 'bg-amber-50 text-amber-600'
+    color: 'bg-rose-50 text-rose-600'
   },
   { 
     title: 'Customer Obsession', 
-    desc: 'Our dedicated support team is available 24/7 to ensure your experience with LeaseLink is nothing short of perfect.',
+    desc: 'Our dedicated support team is available 24/7 to ensure your experience with TradeWings Solution is nothing short of perfect.',
     icon: Heart,
-    color: 'bg-red-50 text-red-600'
+    color: 'bg-pink-50 text-pink-600'
   },
   { 
     title: 'Swift Logistics', 
@@ -40,10 +40,10 @@ const values = [
 ];
 
 const About = () => (
-  <main className="pt-32 pb-20 font-body bg-white overflow-hidden">
+  <main className="pt-32 pb-20 font-body bg-background overflow-hidden text-foreground">
     <SEO 
-      title="About Us | LeaseLink Solution"
-      description="Learn about the LeaseLink Solution mission: redefining the global marketplace through curated excellence and premium logistics."
+      title="About Us | TradeWings Solution"
+      description="Learn about the TradeWings Solution mission: redefining the global marketplace through curated excellence and premium logistics."
     />
 
     <div className="container mx-auto px-6">
@@ -58,7 +58,7 @@ const About = () => (
           The Art of <span className="text-primary italic">Curation.</span>
         </h1>
         <p className="text-muted-foreground leading-relaxed text-xl md:text-2xl font-medium max-w-2xl mx-auto">
-          LeaseLink Solution was founded to bridge the gap between world-class craftsmanship and the modern, discerning consumer.
+          TradeWings Solution was founded to bridge the gap between world-class craftsmanship and the modern, discerning consumer.
         </p>
       </motion.div>
 
@@ -71,9 +71,9 @@ const About = () => (
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="group p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500 text-center"
+            className="group p-8 rounded-[2rem] bg-card border border-border hover:bg-secondary/20 hover:shadow-2xl transition-all duration-500 text-center"
           >
-            <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
               <s.icon className="w-6 h-6 text-primary" />
             </div>
             <p className="text-4xl font-black text-foreground mb-1 tracking-tighter">{s.value}</p>
@@ -90,7 +90,7 @@ const About = () => (
         viewport={{ once: true }}
         className="relative rounded-[4rem] overflow-hidden mb-32 aspect-[21/9] shadow-2xl"
       >
-        <img src={heroBanner} alt="LeaseLink Solution Curated Collection" className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-1000" />
+        <img src={heroBanner} alt="TradeWings Solution Curated Collection" className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-1000" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-12 text-white">
           <p className="text-sm font-black uppercase tracking-widest mb-2">Since 2026</p>
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter">Setting the global standard for retail excellence.</h2>
@@ -109,10 +109,10 @@ const About = () => (
           </h2>
           <div className="space-y-6 text-lg text-muted-foreground font-medium leading-relaxed">
             <p>
-              At LeaseLink Solution, we believe that quality should never be a luxury. Our team travels the world to find manufacturers who share our passion for detail and durability.
+              At TradeWings Solution, we believe that quality should never be a luxury. Our team travels the world to find manufacturers who share our passion for detail and durability.
             </p>
             <p>
-              Every product in our marketplace undergoes a rigorous 5-point inspection before it's even considered for our collection. If it doesn't meet the LeaseLink standard, it doesn't make the cut.
+              Every product in our marketplace undergoes a rigorous 5-point inspection before it's even considered for our collection. If it doesn't meet the TradeWings Solution standard, it doesn't make the cut.
             </p>
           </div>
         </motion.div>
@@ -147,7 +147,7 @@ const About = () => (
       <div className="mb-40">
         <div className="text-center mb-20">
           <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-4">Our Values</p>
-          <h2 className="font-display text-4xl md:text-6xl font-black text-foreground tracking-tighter">The LeaseLink Code</h2>
+          <h2 className="font-display text-4xl md:text-6xl font-black text-foreground tracking-tighter">The TradeWings Solution Code</h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((v, i) => (
@@ -157,7 +157,7 @@ const About = () => (
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:shadow-2xl transition-all duration-500 group"
+              className="p-10 rounded-[2.5rem] bg-card border border-border hover:shadow-2xl transition-all duration-500 group"
             >
               <div className={`w-14 h-14 rounded-2xl ${v.color} flex items-center justify-center mb-8 group-hover:scale-110 transition-transform`}>
                 <v.icon className="w-7 h-7" />

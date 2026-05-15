@@ -15,6 +15,7 @@ const Admin = () => {
     localStorage.getItem("adminKey") === ADMIN_KEY
   );
   const [inputKey, setInputKey] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,8 +23,10 @@ const Admin = () => {
       localStorage.setItem("adminKey", ADMIN_KEY);
       setIsAuthenticated(true);
       toast.success("Access Granted! Welcome Admin.");
+      setError("");
     } else {
-      toast.error("Invalid API Key. Please try again.");
+      setError("Incorrect security key. Access denied.");
+      toast.error("Invalid API Key.");
     }
   };
 
@@ -35,7 +38,7 @@ const Admin = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-[80vh] flex items-center justify-center px-4 bg-slate-50/50">
+      <div className="min-h-[80vh] flex items-center justify-center px-4 bg-background">
         <Card className="w-full max-w-md shadow-2xl border-t-4 border-t-primary animate-in fade-in zoom-in duration-300">
           <CardHeader className="text-center space-y-2">
             <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-2">
@@ -51,10 +54,18 @@ const Admin = () => {
                   type="password"
                   placeholder="••••••••••••••••"
                   value={inputKey}
-                  onChange={(e) => setInputKey(e.target.value)}
-                  className="bg-white border-slate-200 text-center text-lg tracking-widest"
+                  onChange={(e) => {
+                    setInputKey(e.target.value);
+                    if (error) setError("");
+                  }}
+                  className={`bg-secondary border-border text-center text-lg tracking-widest text-foreground transition-all ${error ? 'border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.2)]' : ''}`}
                   required
                 />
+                {error && (
+                  <p className="text-[10px] font-black uppercase tracking-widest text-red-500 text-center animate-bounce mt-2">
+                    {error}
+                  </p>
+                )}
               </div>
               <Button type="submit" className="w-full h-11 text-base font-semibold group font-body">
                 Verify Identity
@@ -71,8 +82,8 @@ const Admin = () => {
     <div className="container mx-auto py-12 px-4 animate-in fade-in duration-500 font-body">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10 border-b pb-6">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 font-display">Admin Dashboard</h1>
-          <p className="text-slate-500 mt-1">Manage your store inventory and categories.</p>
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground font-display">Admin Dashboard</h1>
+          <p className="text-muted-foreground mt-1">Manage your store inventory and categories.</p>
         </div>
         <Button 
           variant="ghost" 
@@ -85,12 +96,12 @@ const Admin = () => {
       </div>
 
       <Tabs defaultValue="products" className="space-y-8">
-        <TabsList className="bg-slate-100 p-1 rounded-xl w-fit">
-          <TabsTrigger value="products" className="rounded-lg px-6 py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+        <TabsList className="bg-secondary p-1 rounded-xl w-fit">
+          <TabsTrigger value="products" className="rounded-lg px-6 py-2 data-[state=active]:bg-background data-[state=active]:shadow-sm">
             <PackagePlus className="w-4 h-4 mr-2" />
             Products
           </TabsTrigger>
-          <TabsTrigger value="categories" className="rounded-lg px-6 py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm">
+          <TabsTrigger value="categories" className="rounded-lg px-6 py-2 data-[state=active]:bg-background data-[state=active]:shadow-sm">
             <Tags className="w-4 h-4 mr-2" />
             Categories
           </TabsTrigger>

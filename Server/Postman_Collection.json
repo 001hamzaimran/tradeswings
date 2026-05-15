@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "lease-link-solution-api",
-		"name": "LeaseLink Solution API",
+		"_postman_id": "tradewingssolution-api",
+		"name": "TradeWings Solution API",
 		"description": "API collection for Product and Category CRUD operations",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},

@@ -1,6 +1,6 @@
-# 💎 LeaseLink Solution | Premium E-Commerce Marketplace
+# 💎 TradeWings Solution | Premium E-Commerce Marketplace
 
-LeaseLink Solution is a high-end, full-stack e-commerce platform designed for premium retail. It features a sophisticated editorial aesthetic, advanced security protocols, and industry-leading SEO architecture.
+TradeWings Solution is a high-end, full-stack e-commerce platform designed for premium retail. It features a sophisticated editorial aesthetic, advanced security protocols, and industry-leading SEO architecture.
 
 ![Hero Banner](https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1200)
 
@@ -51,7 +51,7 @@ Optimized for high-velocity indexing and "Rich Result" visibility:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/001hamzaimran/Ecommerce-Website-LeaseLinkSolution.git
+   git clone https://github.com/001hamzaimran/TradeWings-Solution.git
    ```
 
 2. **Server Setup:**

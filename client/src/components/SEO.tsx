@@ -11,15 +11,15 @@ interface SEOProps {
 }
 
 const SEO = ({ 
-  title = "LeaseLink Solution | Premium Retail & Marketplace", 
-  description = "Discover curated collections of premium office products, baby essentials, home & kitchen, pet supplies, and luxury perfumes. Swift delivery and quality assured at LeaseLink Solution.",
+  title = "TradeWings Solution | Premium Retail & Marketplace", 
+  description = "Discover curated collections of premium office products, baby essentials, home & kitchen, pet supplies, and luxury perfumes. Swift delivery and quality assured at TradeWings Solution.",
   keywords = "e-commerce, retail, office products, baby products, home decor, pet supplies, perfumes, luxury shopping",
   image = "/og-image.jpg",
-  url = "https://leaselinksolution.com",
+  url = "https://tradewingssolution.com",
   type = "website",
   schema
 }: SEOProps) => {
-  const siteTitle = title.includes("LeaseLink Solution") ? title : `${title} | LeaseLink Solution`;
+  const siteTitle = title.includes("TradeWings Solution") ? title : `${title} | TradeWings Solution`;
 
   return (
     <Helmet>

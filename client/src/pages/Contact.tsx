@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 
 const Contact = () => (
-  <main className="pt-32 pb-20 font-body bg-slate-50/50 min-h-screen">
+  <main className="pt-32 pb-20 font-body bg-background text-foreground min-h-screen">
     <div className="container mx-auto px-6">
       {/* Header Section */}
       <motion.div 
@@ -28,29 +28,29 @@ const Contact = () => (
           animate={{ opacity: 1, x: 0 }} 
           className="lg:col-span-4 space-y-6"
         >
-          <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl hover:shadow-2xl transition-all group">
-            <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <div className="bg-card p-8 rounded-[2.5rem] border border-border shadow-xl hover:shadow-2xl transition-all group">
+            <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                <Mail className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-black text-foreground mb-2">Email Support</h3>
             <p className="text-muted-foreground font-medium mb-4">Our dedicated team typically responds within 2 business hours.</p>
-            <a href="mailto:support@leaselink.com" className="text-primary font-black flex items-center gap-2 hover:gap-3 transition-all underline decoration-primary/20 underline-offset-4">
-              support@leaselink.com <ArrowRight className="w-4 h-4" />
+            <a href="mailto:support@tradewingssolution.com" className="text-primary font-black flex items-center gap-2 hover:gap-3 transition-all underline decoration-primary/20 underline-offset-4">
+              support@tradewingssolution.com <ArrowRight className="w-4 h-4" />
             </a>
           </div>
 
-          <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl hover:shadow-2xl transition-all group">
-            <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+          <div className="bg-card p-8 rounded-[2.5rem] border border-border shadow-xl hover:shadow-2xl transition-all group">
+            <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                <Phone className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-black text-foreground mb-2">Direct Line</h3>
             <p className="text-muted-foreground font-medium mb-4">Available Mon-Fri, 9am - 6pm EST for urgent inquiries.</p>
-            <p className="text-primary font-black">+1 (800) LEASE-LINK</p>
+            <p className="text-primary font-black">+1 (800) TRADEWINGS</p>
           </div>
 
-          <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl hover:shadow-2xl transition-all group overflow-hidden relative">
+          <div className="bg-card p-8 rounded-[2.5rem] border border-border shadow-xl hover:shadow-2xl transition-all group overflow-hidden relative">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16" />
-            <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                <Globe className="w-6 h-6 text-primary" />
             </div>
             <h3 className="text-xl font-black text-foreground mb-2">Global Presence</h3>
@@ -62,8 +62,9 @@ const Contact = () => (
         <motion.div 
           initial={{ opacity: 0, y: 30 }} 
           animate={{ opacity: 1, y: 0 }} 
-          className="lg:col-span-8 bg-white p-10 md:p-16 rounded-[3rem] border border-slate-100 shadow-2xl"
+          className="lg:col-span-8 bg-card p-10 md:p-16 rounded-[3rem] border border-border shadow-2xl relative overflow-hidden"
         >
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full -mr-48 -mt-48 blur-[100px]" />
           <div className="flex items-center gap-3 mb-10">
              <div className="w-2 h-2 rounded-full bg-primary" />
              <h2 className="font-display text-3xl font-black text-foreground tracking-tight">Send a message</h2>
@@ -73,17 +74,17 @@ const Contact = () => (
             <div className="grid sm:grid-cols-2 gap-8">
               <div className="space-y-3">
                 <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">First Name</Label>
-                <Input placeholder="John" className="h-14 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary transition-all px-6 font-bold" />
+                <Input placeholder="John" className="h-14 rounded-2xl bg-secondary/50 border-white/5 focus:bg-secondary focus:border-primary transition-all px-6 font-bold text-foreground" />
               </div>
               <div className="space-y-3">
                 <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Last Name</Label>
-                <Input placeholder="Doe" className="h-14 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary transition-all px-6 font-bold" />
+                <Input placeholder="Doe" className="h-14 rounded-2xl bg-secondary/50 border-white/5 focus:bg-secondary focus:border-primary transition-all px-6 font-bold text-foreground" />
               </div>
             </div>
 
             <div className="space-y-3">
               <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Email Address</Label>
-              <Input type="email" placeholder="john@company.com" className="h-14 rounded-2xl bg-slate-50 border-transparent focus:bg-white focus:border-primary transition-all px-6 font-bold" />
+              <Input type="email" placeholder="john@company.com" className="h-14 rounded-2xl bg-secondary/50 border-white/5 focus:bg-secondary focus:border-primary transition-all px-6 font-bold text-foreground" />
             </div>
 
             <div className="space-y-3">
@@ -91,7 +92,7 @@ const Contact = () => (
               <Textarea 
                 placeholder="How can we assist you today?" 
                 rows={6} 
-                className="rounded-[2rem] bg-slate-50 border-transparent focus:bg-white focus:border-primary transition-all p-6 font-bold resize-none" 
+                className="rounded-[2rem] bg-secondary/50 border-white/5 focus:bg-secondary focus:border-primary transition-all p-6 font-bold resize-none text-foreground" 
               />
             </div>
 
@@ -103,7 +104,7 @@ const Contact = () => (
       </div>
 
       {/* Trust Badges */}
-      <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-y border-slate-100">
+      <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-y border-border">
          {[
            { icon: Clock, text: "24/7 Response Support" },
            { icon: ShieldCheck, text: "Secure Data Handling" },
@@ -111,7 +112,7 @@ const Contact = () => (
            { icon: MapPin, text: "Global Logistics Network" }
          ].map((item, i) => (
            <div key={i} className="flex flex-col items-center gap-4 text-center">
-              <item.icon className="w-6 h-6 text-primary/40" />
+              <item.icon className="w-6 h-6 text-primary/60" />
               <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">{item.text}</span>
            </div>
          ))}

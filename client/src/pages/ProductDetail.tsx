@@ -42,13 +42,13 @@ const ProductDetail = () => {
   });
 
   if (isLoading) return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
+    <div className="min-h-screen flex items-center justify-center bg-background">
       <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1 }} className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full" />
     </div>
   );
 
   if (isError || !product) return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-white">
+    <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-background">
       <h2 className="text-3xl font-display font-black text-slate-900">Product not found</h2>
       <Link to="/shop">
         <Button variant="outline" className="rounded-full px-8">Back to Shop</Button>
@@ -79,7 +79,7 @@ const ProductDetail = () => {
     "name": product.name,
     "image": allImages,
     "description": product.description,
-    "brand": { "@type": "Brand", "name": "LeaseLink Solution" },
+    "brand": { "@type": "Brand", "name": "TradeWings Solution" },
     "offers": {
       "@type": "Offer",
       "url": window.location.href,
@@ -95,9 +95,9 @@ const ProductDetail = () => {
   };
 
   return (
-    <main className="pt-24 pb-20 font-body bg-white min-h-screen">
+    <main className="pt-24 pb-20 font-body bg-background text-foreground min-h-screen">
       <SEO 
-        title={`${product.name} | LeaseLink Solution`}
+        title={`${product.name} | TradeWings Solution`}
         description={product.description}
         image={product.image}
         schema={productSchema}
@@ -119,7 +119,7 @@ const ProductDetail = () => {
             <div className="space-y-6">
               <motion.div 
                 layoutId="main-image"
-                className="relative aspect-[4/5] rounded-[3rem] overflow-hidden bg-slate-50 shadow-sm"
+                className="relative aspect-[4/5] rounded-[3rem] overflow-hidden bg-secondary shadow-sm"
               >
                 <img 
                   src={allImages[selectedImage]} 
@@ -136,7 +136,7 @@ const ProductDetail = () => {
                   className={`absolute top-8 right-8 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl z-10 ${
                     isInWishlist(product._id || product.id)
                       ? 'bg-primary text-white scale-110'
-                      : 'bg-white/90 backdrop-blur-md text-foreground hover:scale-110'
+                      : 'bg-secondary/80 backdrop-blur-md text-foreground hover:scale-110'
                   }`}
                 >
                   <Heart className={`w-5 h-5 ${isInWishlist(product._id || product.id) ? 'fill-white' : ''}`} />
@@ -211,7 +211,7 @@ const ProductDetail = () => {
                           className={`min-w-[60px] h-12 px-5 rounded-xl border-2 font-black transition-all duration-300 ${
                             isSelected 
                               ? 'border-primary bg-primary text-white shadow-lg' 
-                              : 'border-slate-100 hover:border-slate-200 text-slate-600'
+                              : 'border-border hover:border-muted-foreground text-foreground'
                           }`}
                         >
                           {value}
@@ -225,7 +225,7 @@ const ProductDetail = () => {
               {/* Quantity & Actions */}
               <div className="space-y-6 pt-6">
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center bg-slate-50 rounded-2xl p-1 border border-slate-100">
+                  <div className="flex items-center bg-secondary rounded-2xl p-1 border border-border">
                     <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 flex items-center justify-center hover:text-primary transition-colors">
                       <Minus className="w-4 h-4" />
                     </button>
@@ -263,18 +263,18 @@ const ProductDetail = () => {
         </div>
 
         {/* Product Story / Details */}
-        <div className="mt-40 border-t border-slate-100 pt-32">
+        <div className="mt-40 border-t border-border pt-32">
           <div className="grid lg:grid-cols-3 gap-20">
              <div className="lg:col-span-1">
                 <h2 className="text-4xl font-display font-black text-foreground tracking-tighter mb-6">Designed with Excellence.</h2>
                 <p className="text-slate-500 font-medium leading-relaxed">
-                   At LeaseLink Solution, we don't just pick products; we curate experiences. This piece represents our commitment to modern aesthetics and unparalleled durability.
+                   At TradeWings Solution, we don't just pick products; we curate experiences. This piece represents our commitment to modern aesthetics and unparalleled durability.
                 </p>
              </div>
              <div className="lg:col-span-2 space-y-12">
                 <div className="grid sm:grid-cols-2 gap-12">
                    <div className="space-y-4">
-                      <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-2xl bg-secondary flex items-center justify-center">
                          <Award className="w-6 h-6 text-primary" />
                       </div>
                       <h4 className="text-lg font-black text-foreground">Premium Materials</h4>

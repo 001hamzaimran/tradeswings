@@ -166,7 +166,7 @@ const ProductManager = () => {
       </div>
 
       {isAdding && (
-        <Card className="border-primary/20 bg-slate-50/50">
+        <Card className="border-border bg-card shadow-2xl animate-in zoom-in-95 duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-4">
             <CardTitle className="text-xl">{editingProduct ? 'Edit' : 'Add'} Product</CardTitle>
             <Button variant="ghost" size="icon" onClick={resetForm}><X className="w-4 h-4" /></Button>
@@ -176,20 +176,20 @@ const ProductManager = () => {
               <div className="space-y-4">
                 <div className="space-y-1">
                   <label className="text-xs font-medium uppercase text-muted-foreground">Product Name</label>
-                  <Input value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
+                  <Input value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required className="bg-secondary/50 border-border" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-xs font-medium uppercase text-muted-foreground">Description</label>
-                  <Textarea value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})} required className="h-24" />
+                  <Textarea value={formData.description} onChange={(e) => setFormData({...formData, description: e.target.value})} required className="h-24 bg-secondary/50 border-border" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
                     <label className="text-xs font-medium uppercase text-muted-foreground">Price ($)</label>
-                    <Input type="number" value={formData.price} onChange={(e) => setFormData({...formData, price: e.target.value})} required />
+                    <Input type="number" value={formData.price} onChange={(e) => setFormData({...formData, price: e.target.value})} required className="bg-secondary/50 border-border" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-xs font-medium uppercase text-muted-foreground">Original Price ($)</label>
-                    <Input type="number" value={formData.originalPrice} onChange={(e) => setFormData({...formData, originalPrice: e.target.value})} />
+                    <Input type="number" value={formData.originalPrice} onChange={(e) => setFormData({...formData, originalPrice: e.target.value})} className="bg-secondary/50 border-border" />
                   </div>
                 </div>
               </div>
@@ -197,9 +197,9 @@ const ProductManager = () => {
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-xs font-black uppercase text-muted-foreground">Category <span className="text-red-500">*</span></label>
+                  <label className="text-xs font-black uppercase text-muted-foreground tracking-widest">Category <span className="text-primary">*</span></label>
                     <Select value={formData.category} onValueChange={(val) => setFormData({...formData, category: val})}>
-                      <SelectTrigger className={!formData.category ? "border-amber-200" : ""}>
+                      <SelectTrigger className={`bg-secondary/50 border-border ${!formData.category ? "border-primary/50" : ""}`}>
                         <SelectValue placeholder="Select Category" />
                       </SelectTrigger>
                       <SelectContent>
@@ -210,9 +210,9 @@ const ProductManager = () => {
                     </Select>
                   </div>
                   <div className="space-y-1">
-                    <label className="text-xs font-black uppercase text-muted-foreground">Sub Category <span className="text-red-500">*</span></label>
+                    <label className="text-xs font-black uppercase text-muted-foreground tracking-widest">Sub Category <span className="text-primary">*</span></label>
                     <Select value={formData.subCategory} onValueChange={(val) => setFormData({...formData, subCategory: val})} disabled={!formData.category || subcategories.length === 0}>
-                      <SelectTrigger className={(!formData.subCategory && formData.category) ? "border-amber-200" : ""}>
+                      <SelectTrigger className={`bg-secondary/50 border-border ${(!formData.subCategory && formData.category) ? "border-primary/50" : ""}`}>
                         <SelectValue placeholder={formData.category && subcategories.length === 0 ? "No Subs Found" : "Select Sub"} />
                       </SelectTrigger>
                       <SelectContent>
@@ -236,12 +236,13 @@ const ProductManager = () => {
                         value={formData.imageLink} 
                         onChange={(e) => setFormData({...formData, imageLink: e.target.value})}
                         disabled={!!mainImageFile}
+                        className="bg-secondary/50 border-border"
                       />
                     </div>
                     <div className="shrink-0">
                       <Input type="file" id="prod-img" className="hidden" onChange={(e) => setMainImageFile(e.target.files?.[0] || null)} />
-                      <Button type="button" variant="outline" onClick={() => document.getElementById('prod-img')?.click()}>
-                        {mainImageFile ? <X className="w-4 h-4 text-red-500" /> : <Upload className="w-4 h-4" />}
+                      <Button type="button" variant="outline" onClick={() => document.getElementById('prod-img')?.click()} className="bg-secondary/50 border-border hover:bg-secondary">
+                        {mainImageFile ? <X className="w-4 h-4 text-primary" /> : <Upload className="w-4 h-4" />}
                       </Button>
                     </div>
                   </div>
@@ -255,21 +256,22 @@ const ProductManager = () => {
                         placeholder="Paste gallery links (comma separated)" 
                         value={formData.imagesLinks} 
                         onChange={(e) => setFormData({...formData, imagesLinks: e.target.value})}
+                        className="bg-secondary/50 border-border"
                       />
                     </div>
                     <div className="shrink-0">
                       <Input type="file" id="gal-img" className="hidden" multiple onChange={(e) => setGalleryImageFiles(Array.from(e.target.files || []))} />
-                      <Button type="button" variant="outline" onClick={() => document.getElementById('gal-img')?.click()}>
-                        {galleryImageFiles.length > 0 ? <span className="text-xs font-bold text-primary">{galleryImageFiles.length} Selected</span> : <Plus className="w-4 h-4" />}
+                      <Button type="button" variant="outline" onClick={() => document.getElementById('gal-img')?.click()} className="bg-secondary/50 border-border hover:bg-secondary">
+                        {galleryImageFiles.length > 0 ? <span className="text-xs font-black text-primary">{galleryImageFiles.length} Selected</span> : <Plus className="w-4 h-4" />}
                       </Button>
                     </div>
                   </div>
                   {galleryImageFiles.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-2">
                       {galleryImageFiles.map((f, i) => (
-                        <div key={i} className="relative w-10 h-10 rounded overflow-hidden border">
+                        <div key={i} className="relative w-10 h-10 rounded overflow-hidden border border-border shadow-lg">
                           <img src={URL.createObjectURL(f)} className="w-full h-full object-cover" />
-                          <button type="button" onClick={() => setGalleryImageFiles(galleryImageFiles.filter((_, idx) => idx !== i))} className="absolute top-0 right-0 bg-red-500 text-white p-0.5 rounded-bl">
+                          <button type="button" onClick={() => setGalleryImageFiles(galleryImageFiles.filter((_, idx) => idx !== i))} className="absolute top-0 right-0 bg-primary text-white p-0.5 rounded-bl">
                             <X className="w-2 h-2" />
                           </button>
                         </div>
@@ -279,13 +281,13 @@ const ProductManager = () => {
                 </div>
 
                 <div className="flex gap-6 pt-2">
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" checked={formData.featured} onChange={(e) => setFormData({...formData, featured: e.target.checked})} className="rounded border-slate-300 text-primary focus:ring-primary" />
-                    <span className="text-sm font-medium">Featured</span>
+                  <label className="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" checked={formData.featured} onChange={(e) => setFormData({...formData, featured: e.target.checked})} className="w-5 h-5 rounded border-border bg-secondary text-primary focus:ring-primary transition-all" />
+                    <span className="text-sm font-black uppercase tracking-tighter text-muted-foreground group-hover:text-primary transition-colors">Featured</span>
                   </label>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input type="checkbox" checked={formData.isNew} onChange={(e) => setFormData({...formData, isNew: e.target.checked})} className="rounded border-slate-300 text-primary focus:ring-primary" />
-                    <span className="text-sm font-medium">New Arrival</span>
+                  <label className="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" checked={formData.isNew} onChange={(e) => setFormData({...formData, isNew: e.target.checked})} className="w-5 h-5 rounded border-border bg-secondary text-primary focus:ring-primary transition-all" />
+                    <span className="text-sm font-black uppercase tracking-tighter text-muted-foreground group-hover:text-primary transition-colors">New Arrival</span>
                   </label>
                 </div>
 
@@ -304,7 +306,7 @@ const ProductManager = () => {
                   </div>
                   
                   {formData.variants.map((v, i) => (
-                    <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end bg-secondary/50 p-4 rounded-2xl border border-border">
                       <div className="md:col-span-4 space-y-1">
                         <label className="text-[10px] font-black uppercase text-muted-foreground tracking-widest">Variant Name</label>
                         <Input 
@@ -315,6 +317,7 @@ const ProductManager = () => {
                             newVariants[i].name = e.target.value;
                             setFormData({...formData, variants: newVariants});
                           }}
+                          className="bg-background/50 border-border"
                         />
                       </div>
                       <div className="md:col-span-7 space-y-1">
@@ -327,6 +330,7 @@ const ProductManager = () => {
                             newVariants[i].values = e.target.value;
                             setFormData({...formData, variants: newVariants});
                           }}
+                          className="bg-background/50 border-border"
                         />
                       </div>
                       <div className="md:col-span-1">
@@ -352,18 +356,23 @@ const ProductManager = () => {
                   const isSubMissing = formData.category && subcategories.length === 0;
                   
                   return (
-                    <Button 
-                      type="submit" 
-                      className="w-full h-14 rounded-2xl" 
-                      disabled={saveMutation.isPending || isMissingFields || isSubMissing}
-                    >
-                      {saveMutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      {isSubMissing 
-                        ? "⚠️ Category has no subcategories" 
-                        : isMissingFields 
-                          ? "⌛ Please select Category & Subcategory to save" 
-                          : (editingProduct ? 'Update Product' : 'Save Product')}
-                    </Button>
+                    <>
+                      <Button 
+                        type="submit" 
+                        className="w-full h-14 rounded-2xl" 
+                        disabled={saveMutation.isPending || isMissingFields || isSubMissing}
+                      >
+                        {saveMutation.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                        {isSubMissing 
+                          ? "⚠️ Category has no subcategories" 
+                          : isMissingFields 
+                            ? "⌛ Please select Category & Subcategory to save" 
+                            : (editingProduct ? 'Update Product Details' : 'Publish Product to Store')}
+                      </Button>
+                      {isMissingFields && !isSubMissing && (
+                        <p className="text-center text-[10px] font-black uppercase tracking-widest text-primary/60 mt-4">All required fields must be completed</p>
+                      )}
+                    </>
                   );
                 })()}
               </div>
@@ -372,9 +381,9 @@ const ProductManager = () => {
         </Card>
       )}
 
-      <div className="border rounded-xl overflow-hidden bg-white shadow-sm font-body">
+      <div className="border border-border rounded-xl overflow-hidden bg-card shadow-sm font-body text-foreground">
         <Table>
-          <TableHeader className="bg-slate-50">
+          <TableHeader className="bg-secondary font-body">
             <TableRow>
               <TableHead className="w-[80px]">Image</TableHead>
               <TableHead>Name</TableHead>
@@ -392,12 +401,12 @@ const ProductManager = () => {
                   </div>
                 </TableCell>
                 <TableCell>
-                  <div className="font-medium text-slate-900">{p.name}</div>
-                  {p.featured && <span className="text-[9px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full uppercase font-bold">Featured</span>}
+                  <div className="font-bold text-foreground">{p.name}</div>
+                  {p.featured && <span className="text-[9px] bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase font-black">Featured</span>}
                 </TableCell>
-                <TableCell className="text-slate-500 text-xs">
-                  <div>{typeof p.category === 'object' ? p.category.name : 'No Cat'}</div>
-                  <div className="opacity-70 italic">{typeof p.subCategory === 'object' ? p.subCategory.name : 'No Sub'}</div>
+                <TableCell className="text-muted-foreground text-xs font-medium">
+                  <div className="text-foreground/80">{p.category?.name || (typeof p.category === 'string' ? p.category : 'No Cat')}</div>
+                  <div className="opacity-50 italic">{p.subCategory?.name || (typeof p.subCategory === 'string' ? p.subCategory : 'No Sub')}</div>
                 </TableCell>
                 <TableCell className="font-semibold">${p.price}</TableCell>
                 <TableCell className="text-right space-x-2">

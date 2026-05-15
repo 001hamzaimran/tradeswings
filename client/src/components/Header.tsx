@@ -60,19 +60,19 @@ const Header = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 font-body ${
         scrolled || !isHome 
-          ? 'bg-background/90 backdrop-blur-xl border-b border-border py-2 shadow-sm' 
-          : 'bg-transparent py-4'
+          ? 'bg-background/40 backdrop-blur-3xl border-b border-white/5 py-3 shadow-2xl' 
+          : 'bg-black/20 backdrop-blur-md py-5'
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className={`w-8 h-8 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:rotate-12`}>
-            <span className="text-white font-bold text-lg">L</span>
+        <Link to="/" className="flex items-center gap-4 group">
+          <div className="w-12 h-12 rounded-[1.25rem] bg-gradient-to-br from-primary via-primary to-accent flex items-center justify-center transition-all duration-700 group-hover:rotate-[15deg] group-hover:scale-110 shadow-[0_10px_30px_rgba(139,92,246,0.4)] border border-white/10">
+            <span className="text-white font-black text-2xl tracking-tighter drop-shadow-md">T</span>
           </div>
-          <span className={`font-display text-xl font-bold tracking-tight transition-colors ${
+          <span className={`font-display text-2xl font-black tracking-tighter transition-all duration-500 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] ${
             scrolled || !isHome ? 'text-foreground' : 'text-white'
           }`}>
-            LeaseLink Solution
+            TradeWings<span className="text-primary italic brightness-150">Solution</span>
           </span>
         </Link>
 
@@ -141,7 +141,7 @@ const Header = () => {
               scrolled || !isHome ? 'text-foreground' : 'text-white'
             }`} />
             {wishlist.length > 0 && (
-              <span className="absolute top-0 right-0 w-4 h-4 rounded-full bg-red-500 text-white text-[9px] flex items-center justify-center font-bold shadow-lg">
+              <span className="absolute top-0 right-0 w-4 h-4 rounded-full bg-primary text-white text-[9px] flex items-center justify-center font-bold shadow-[0_0_10px_rgba(139,92,246,0.5)]">
                 {wishlist.length}
               </span>
             )}
@@ -159,13 +159,13 @@ const Header = () => {
           </Link>
           
           <Link to="/admin">
-            <button className={`hidden md:flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold transition-all shadow-sm ${
+            <button className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-2xl text-[10px] uppercase tracking-[0.2em] font-black transition-all shadow-xl hover:scale-105 active:scale-95 ${
               scrolled || !isHome 
-                ? 'bg-foreground text-background hover:bg-foreground/90' 
-                : 'bg-white text-black hover:bg-white/90'
+                ? 'bg-primary text-white hover:bg-primary/90' 
+                : 'bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20'
             }`}>
               <User className="w-3.5 h-3.5" />
-              Portal
+              Admin Portal
             </button>
           </Link>
 
@@ -182,15 +182,11 @@ const Header = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-0 bg-background z-[60] md:hidden flex flex-col"
+            className="fixed inset-0 top-0 bg-background/95 backdrop-blur-3xl z-[60] md:hidden flex flex-col"
           >
-            <div className="p-6 border-b flex justify-between items-center">
-              <span className="font-display font-bold text-xl">LeaseLink Solution</span>
-              <button onClick={() => setMobileOpen(false)}><X className="w-6 h-6" /></button>
+            <div className="p-6 border-b border-white/5 flex justify-between items-center bg-card/50">
+              <span className="font-display font-black text-xl tracking-tighter">TradeWings <span className="text-primary italic">Solution</span></span>
+              <button onClick={() => setMobileOpen(false)} className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center"><X className="w-6 h-6" /></button>
             </div>
             <div className="flex-1 overflow-y-auto p-6 space-y-8">
               <div className="space-y-4">

@@ -78,10 +78,10 @@ const Shop = () => {
   }, [products, category, sort, priceRange, searchQuery]);
 
   return (
-    <main className="pt-28 pb-20 font-body min-h-screen bg-slate-50/30">
+    <main className="pt-28 pb-20 font-body min-h-screen bg-background text-foreground">
       <SEO 
-        title={`${category === 'All' ? 'Shop All' : category} | LeaseLink Solution`}
-        description={`Explore our ${category === 'All' ? 'full collection' : category} at LeaseLink Solution. Find premium products with swift global delivery.`}
+        title={`${category === 'All' ? 'Shop All' : category} | TradeWings Solution`}
+        description={`Explore our ${category === 'All' ? 'full collection' : category} at TradeWings Solution. Find premium products with swift global delivery.`}
       />
       <div className="container mx-auto px-6">
         {/* Page Header */}
@@ -101,7 +101,7 @@ const Shop = () => {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input 
                   placeholder="Search products..." 
-                  className="pl-10 rounded-2xl bg-white border-slate-200 h-12 shadow-sm" 
+                  className="pl-10 rounded-2xl bg-card border-border h-12 shadow-sm" 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -158,7 +158,7 @@ const Shop = () => {
             <div className="pt-6 border-t">
               <h3 className="text-sm font-black uppercase tracking-widest text-foreground mb-4">Sort By</h3>
               <Select value={sort} onValueChange={setSort}>
-                <SelectTrigger className="w-full h-12 rounded-2xl border-slate-200 font-bold text-sm bg-white shadow-sm">
+                <SelectTrigger className="w-full h-12 rounded-2xl border-border font-bold text-sm bg-card shadow-sm">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="rounded-xl">
@@ -188,7 +188,7 @@ const Shop = () => {
                    <p className="text-sm font-medium text-muted-foreground">
                      Showing <span className="text-foreground font-bold">{filtered.length}</span> results
                    </p>
-                   <div className="flex gap-2 p-1 bg-slate-100 rounded-xl">
+                   <div className="flex gap-2 p-1 bg-secondary rounded-xl">
                       <Button 
                         variant={viewType === 'grid' ? 'secondary' : 'ghost'} 
                         size="icon" 
@@ -220,9 +220,9 @@ const Shop = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ delay: i * 0.05 }}
-                          className="flex flex-col sm:flex-row gap-6 p-4 bg-white rounded-3xl border border-slate-100 hover:shadow-xl transition-all group"
+                          className="flex flex-col sm:flex-row gap-6 p-4 bg-card rounded-3xl border border-border hover:shadow-xl transition-all group"
                         >
-                          <Link to={`/product/${p._id || p.id}`} className="shrink-0 w-full sm:w-48 aspect-square rounded-2xl overflow-hidden bg-slate-50 relative">
+                          <Link to={`/product/${p._id || p.id}`} className="shrink-0 w-full sm:w-48 aspect-square rounded-2xl overflow-hidden bg-secondary relative">
                              <img src={p.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={p.name} />
                              {p.isNew && <span className="absolute top-3 left-3 bg-primary text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-lg">New</span>}
                           </Link>
@@ -265,7 +265,7 @@ const Shop = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center py-32 space-y-4"
                   >
-                    <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
                        <Search className="w-8 h-8 text-slate-300" />
                     </div>
                     <h3 className="text-2xl font-black text-foreground tracking-tighter">No matches found</h3>

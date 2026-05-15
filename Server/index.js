@@ -26,6 +26,18 @@ app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(securityMiddleware);
 app.use(secureResponse);
 
+// Performance Monitoring
+app.use((req, res, next) => {
+    const start = Date.now();
+    res.on('finish', () => {
+        const duration = Date.now() - start;
+        if (duration > 500) {
+            console.warn(`🐢 Slow Request: ${req.method} ${req.originalUrl} - ${duration}ms`);
+        }
+    });
+    next();
+});
+
 // Routes
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);

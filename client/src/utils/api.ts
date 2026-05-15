@@ -1,5 +1,5 @@
 /**
- * API Utility for LeaseLink Solution
+ * API Utility for TradeWings Solution
  * Handles secure de-masking of payloads and integrity headers
  */
 
@@ -7,7 +7,7 @@ export const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
     // Add Integrity Header
     const headers = {
         ...(options.headers || {}),
-        'x-app-integrity': import.meta.env.VITE_API_INTEGRITY_SECRET || 'leaselink_secure_2026'
+        'x-app-integrity': import.meta.env.VITE_API_INTEGRITY_SECRET || 'tradewings_secure_2026'
     };
 
     const response = await fetch(endpoint, { ...options, headers });

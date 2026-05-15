@@ -12,10 +12,10 @@ const Wishlist = () => {
   const { addItem } = useCart();
 
   return (
-    <main className="pt-32 pb-20 font-body bg-white min-h-screen">
+    <main className="pt-32 pb-20 font-body bg-background text-foreground min-h-screen">
       <SEO 
-        title="My Wishlist | LeaseLink Solution"
-        description="View and manage your favourite premium products at LeaseLink Solution."
+        title="My Wishlist | TradeWings Solution"
+        description="View and manage your favourite premium products at TradeWings Solution."
       />
 
       <div className="container mx-auto px-6">
@@ -39,9 +39,9 @@ const Wishlist = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center py-32 bg-slate-50 rounded-[3rem] border border-dashed border-slate-200"
+            className="text-center py-32 bg-card rounded-[3rem] border border-dashed border-border"
           >
-            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl">
+            <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl">
               <Heart className="w-10 h-10 text-slate-200" />
             </div>
             <h2 className="text-2xl font-black text-foreground mb-4 tracking-tight">Your wishlist is empty</h2>

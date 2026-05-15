@@ -145,9 +145,9 @@ const CategoryManager = () => {
         </Card>
       )}
 
-      <div className="border rounded-xl overflow-hidden bg-white shadow-sm">
+      <div className="border border-border rounded-xl overflow-hidden bg-card shadow-sm text-foreground">
         <Table>
-          <TableHeader className="bg-slate-50 font-body">
+          <TableHeader className="bg-secondary font-body">
             <TableRow>
               <TableHead className="w-[80px]">Image</TableHead>
               <TableHead>Name</TableHead>
