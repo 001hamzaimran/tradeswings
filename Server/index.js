@@ -6,13 +6,15 @@ import { securityMiddleware } from './Middleware/security.js';
 import categoryRoutes from './Routes/categoryRoutes.js';
 import productRoutes from './Routes/productRoutes.js';
 import subcategoryRoutes from './Routes/subcategoryRoutes.js';
-
-
-
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { secureResponse } from './Middleware/secureResponse.js';
 
 // Load environment variables
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Connect to Database
 connectDB();
@@ -38,15 +40,23 @@ app.use((req, res, next) => {
     next();
 });
 
-// Routes
+// API Routes
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/subcategories', subcategoryRoutes);
 
+// Serve Static Files in Production
+const clientBuildPath = path.join(__dirname, '../client/dist');
+app.use(express.static(clientBuildPath));
 
-// Basic Route
-app.get('/', (req, res) => {
-    res.send('API is running...');
+// Catch-all to serve index.html for client-side routing
+app.use((req, res) => {
+    // Only serve index.html if it's not an API request
+    if (!req.path.startsWith('/api')) {
+        res.sendFile(path.join(clientBuildPath, 'index.html'));
+    } else {
+        res.status(404).json({ message: "API endpoint not found" });
+    }
 });
 
 const PORT = process.env.PORT || 5000;
