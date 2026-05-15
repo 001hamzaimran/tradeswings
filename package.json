@@ -1,0 +1,10 @@
+{
+  "name": "tradeswings-fullstack",
+  "version": "1.0.0",
+  "scripts": {
+    "install-all": "npm install && cd Server && npm install && cd ../client && npm install",
+    "build-client": "cd client && npm run build",
+    "start": "cd Server && node index.js",
+    "prod": "npm run build-client && npm run start"
+  }
+}

@@ -74,4 +74,42 @@ Optimized for high-velocity indexing and "Rich Result" visibility:
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
-Built with ❤️ .
+## 🚀 Deployment Guide (VPS)
+
+### 1. Update Environment Variables
+Ensure your `.env` files on the server match the new project identity:
+
+**Server (`/Server/.env`):**
+```env
+API_INTEGRITY_SECRET=tradewings_secure_2026
+```
+
+**Client (`/client/.env`):**
+```env
+VITE_API_URL=/api
+VITE_API_INTEGRITY_SECRET=tradewings_secure_2026
+```
+*(Note: Using `/api` as the URL allows the frontend to proxy requests to the same origin.)*
+
+### 2. Build & Launch
+From the root directory:
+```bash
+# Install all dependencies
+npm install; cd Server; npm install; cd ../client; npm install
+
+# Build frontend
+cd client; npm run build
+
+# Start server
+cd ../Server; node index.js
+```
+
+### 3. Process Management (Recommended)
+Use **PM2** to keep the server running:
+```bash
+npm install -g pm2
+pm2 start Server/index.js --name "tradeswings-backend"
+```
+
+---
+Built with ❤️ by TradeWings Solution.

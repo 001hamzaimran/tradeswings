@@ -16,7 +16,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: 'TradeWingsSolution/Categories',
+        folder: 'LeaseLinkSolution/Categories',
         allowed_formats: ['jpg', 'png', 'jpeg'],
     },
 });
