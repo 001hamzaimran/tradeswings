@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, Menu, X, ChevronDown, User, Heart } from 'lucide-react';
+import { ShoppingBag, Menu, X, ChevronDown, User, Heart, BookOpen, Bot } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useState, useRef, useEffect } from 'react';
@@ -22,8 +22,10 @@ const Header = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState(false);
+  const [showServicesMenu, setShowServicesMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -51,6 +53,17 @@ const Header = () => {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setShowMegaMenu(false);
+    }, 200);
+  };
+
+  const handleServicesMouseEnter = () => {
+    if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current);
+    setShowServicesMenu(true);
+  };
+
+  const handleServicesMouseLeave = () => {
+    servicesTimeoutRef.current = setTimeout(() => {
+      setShowServicesMenu(false);
     }, 200);
   };
 
@@ -114,6 +127,68 @@ const Header = () => {
                         </div>
                       </Link>
                     ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Services Dropdown */}
+          <div 
+            className="relative flex items-center h-12"
+            onMouseEnter={handleServicesMouseEnter}
+            onMouseLeave={handleServicesMouseLeave}
+          >
+            <button className={`flex items-center gap-1.5 text-sm font-semibold tracking-wide transition-colors ${
+              scrolled || !isHome ? 'text-muted-foreground hover:text-foreground' : 'text-white/80 hover:text-white'
+            }`}>
+              Services <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showServicesMenu ? 'rotate-180' : ''}`} />
+            </button>
+
+            <AnimatePresence>
+              {showServicesMenu && (
+                <motion.div
+                  initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                  className="absolute top-full left-1/2 -translate-x-1/2 w-[440px] bg-background/95 backdrop-blur-2xl border border-border rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden p-3"
+                >
+                  <div className="flex flex-col gap-2">
+                    <Link
+                      to="/services/book-publishing-and-editing"
+                      className="p-3.5 rounded-xl hover:bg-primary/10 transition-all flex items-start gap-4 group/item border border-transparent hover:border-primary/20"
+                      onClick={() => setShowServicesMenu(false)}
+                    >
+                      <div className="w-11 h-11 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center shrink-0 group-hover/item:scale-110 transition-transform text-primary">
+                        <BookOpen className="w-5 h-5" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-sm text-foreground group-hover/item:text-primary transition-colors">
+                          Book Publishing and Editing
+                        </span>
+                        <span className="text-xs text-muted-foreground mt-0.5 leading-snug">
+                          Ghostwriting, manuscript editing, proofreading & Amazon KDP publishing
+                        </span>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/services/business-automation"
+                      className="p-3.5 rounded-xl hover:bg-primary/10 transition-all flex items-start gap-4 group/item border border-transparent hover:border-primary/20"
+                      onClick={() => setShowServicesMenu(false)}
+                    >
+                      <div className="w-11 h-11 rounded-xl bg-primary/15 border border-primary/20 flex items-center justify-center shrink-0 group-hover/item:scale-110 transition-transform text-primary">
+                        <Bot className="w-5 h-5" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-bold text-sm text-foreground group-hover/item:text-primary transition-colors">
+                          Business Automation
+                        </span>
+                        <span className="text-xs text-muted-foreground mt-0.5 leading-snug">
+                          Hands-free Amazon FBA Wholesale, Shopify & TikTok Shop management
+                        </span>
+                      </div>
+                    </Link>
                   </div>
                 </motion.div>
               )}
@@ -203,6 +278,38 @@ const Header = () => {
                        {cat.name}
                      </Link>
                    ))}
+                </div>
+              </div>
+              <div className="space-y-4">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Professional Services</p>
+                <div className="grid grid-cols-1 gap-2">
+                  <Link
+                    to="/services/book-publishing-and-editing"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-4 p-4 bg-secondary/50 rounded-2xl text-sm font-bold border border-white/5 hover:border-primary/30 transition-all"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                      <BookOpen className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-foreground">Book Publishing & Editing</div>
+                      <div className="text-[10px] text-muted-foreground font-medium">Ghostwriting, Editing & Global Publishing</div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    to="/services/business-automation"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-4 p-4 bg-secondary/50 rounded-2xl text-sm font-bold border border-white/5 hover:border-primary/30 transition-all"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                      <Bot className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-foreground">Business Automation</div>
+                      <div className="text-[10px] text-muted-foreground font-medium">Amazon, Shopify & TikTok Management</div>
+                    </div>
+                  </Link>
                 </div>
               </div>
               <div className="space-y-4">

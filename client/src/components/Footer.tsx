@@ -23,11 +23,12 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="text-[10px] font-black tracking-[0.2em] uppercase mb-6 text-white/40">Our Company</h4>
+          <h4 className="text-[10px] font-black tracking-[0.2em] uppercase mb-6 text-white/40">Services & Company</h4>
           <ul className="space-y-3 text-sm text-white/60">
+            <li className="transition-transform hover:translate-x-1 duration-300"><Link to="/services/book-publishing-and-editing" className="hover:text-white transition-colors">Book Publishing & Editing</Link></li>
+            <li className="transition-transform hover:translate-x-1 duration-300"><Link to="/services/business-automation" className="hover:text-white transition-colors">Business Automation</Link></li>
             <li className="transition-transform hover:translate-x-1 duration-300"><Link to="/about" className="hover:text-white transition-colors">Our Mission</Link></li>
             <li className="transition-transform hover:translate-x-1 duration-300"><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
-            <li className="transition-transform hover:translate-x-1 duration-300"><Link to="/shop" className="hover:text-white transition-colors">Latest Arrivals</Link></li>
             <li className="transition-transform hover:translate-x-1 duration-300"><Link to="/admin" className="hover:text-white transition-colors">Partner Portal</Link></li>
           </ul>
         </div>
